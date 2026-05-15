@@ -1,0 +1,6 @@
+{
+  "name": "HoverCraft",
+  "description": "A playground for crafting and previewing HTML/Tailwind hover animations directly from code. No GUI sliders, just pure code and live previews.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
