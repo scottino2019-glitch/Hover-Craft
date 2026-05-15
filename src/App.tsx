@@ -13,6 +13,26 @@ const EXAMPLES = [
 </button>`
   },
   {
+    id: 'btn-brutalist',
+    category: 'Buttons',
+    title: 'Brutalist Press',
+    icon: <MousePointerClick className="w-4 h-4" />,
+    code: `<button class="relative px-8 py-3 font-black text-black bg-white border-4 border-black uppercase transition-all duration-150 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] active:shadow-none active:translate-x-[8px] active:translate-y-[8px]">
+  Brutalismo
+</button>`
+  },
+  {
+    id: 'btn-neumorphic',
+    category: 'Buttons',
+    title: 'Neumorphic Inset',
+    icon: <MousePointerClick className="w-4 h-4" />,
+    code: `<div class="p-8 bg-gray-200 rounded-3xl">
+  <button class="px-8 py-4 rounded-2xl bg-gray-200 text-gray-500 font-bold tracking-widest uppercase transition-all duration-300 shadow-[8px_8px_16px_#c5c5c5,-8px_-8px_16px_#ffffff] hover:shadow-[inset_8px_8px_16px_#c5c5c5,inset_-8px_-8px_16px_#ffffff] hover:text-blue-500 focus:outline-none">
+    Premi Qui
+  </button>
+</div>`
+  },
+  {
     id: 'btn-sweep',
     category: 'Buttons',
     title: 'Sweep Right Fill',
@@ -42,6 +62,16 @@ const EXAMPLES = [
 </span>`
   },
   {
+    id: 'text-underline-grow',
+    category: 'Special',
+    title: 'Animated Underline',
+    icon: <Terminal className="w-4 h-4" />,
+    code: `<span class="relative text-3xl font-bold text-gray-800 cursor-pointer group">
+  Hover Reveal
+  <span class="absolute -bottom-2 left-0 w-0 h-1.5 bg-blue-600 transition-all duration-300 ease-out group-hover:w-full rounded-full"></span>
+</span>`
+  },
+  {
     id: 'btn-selection',
     category: 'Special',
     title: 'Selection Reveal',
@@ -68,26 +98,6 @@ const EXAMPLES = [
 </button>`
   },
   {
-    id: 'btn-brutalist',
-    category: 'Buttons',
-    title: 'Brutalist Press',
-    icon: <MousePointerClick className="w-4 h-4" />,
-    code: `<button class="relative px-8 py-3 font-black text-black bg-white border-4 border-black uppercase transition-all duration-150 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[4px] hover:translate-y-[4px] active:shadow-none active:translate-x-[8px] active:translate-y-[8px]">
-  Brutalismo
-</button>`
-  },
-  {
-    id: 'btn-neumorphic',
-    category: 'Buttons',
-    title: 'Neumorphic Inset',
-    icon: <MousePointerClick className="w-4 h-4" />,
-    code: `<div class="p-8 bg-gray-200 rounded-3xl">
-  <button class="px-8 py-4 rounded-2xl bg-gray-200 text-gray-500 font-bold tracking-widest uppercase transition-all duration-300 shadow-[8px_8px_16px_#c5c5c5,-8px_-8px_16px_#ffffff] hover:shadow-[inset_8px_8px_16px_#c5c5c5,inset_-8px_-8px_16px_#ffffff] hover:text-blue-500 focus:outline-none">
-    Premi Qui
-  </button>
-</div>`
-  }
-  {
     id: 'shape-morph',
     category: 'Transform',
     title: 'Shape Morph',
@@ -95,16 +105,6 @@ const EXAMPLES = [
     code: `<div class="w-32 h-32 bg-indigo-600 rounded-none cursor-pointer flex items-center justify-center text-white font-black shadow-lg transition-all duration-700 ease-in-out hover:rounded-full hover:rotate-180 hover:bg-pink-500">
   MORPH
 </div>`
-  },
-  {
-    id: 'text-underline-grow',
-    category: 'Special',
-    title: 'Animated Underline',
-    icon: <Terminal className="w-4 h-4" />,
-    code: `<span class="relative text-3xl font-bold text-gray-800 cursor-pointer group">
-  Hover Reveal
-  <span class="absolute -bottom-2 left-0 w-0 h-1.5 bg-blue-600 transition-all duration-300 ease-out group-hover:w-full rounded-full"></span>
-</span>`
   },
   {
     id: 'img-zoom-blur',
@@ -119,23 +119,6 @@ const EXAMPLES = [
   />
   <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100">
      <span class="text-white font-bold text-lg tracking-widest uppercase py-2 px-4 border-2 border-white/50 backdrop-blur-sm rounded">Esplora</span>
-  </div>
-</div>`
-  },
-  {
-    id: 'img-text-reveal',
-    category: 'Images',
-    title: 'Dark Overlay & Text',
-    icon: <ImageIcon className="w-4 h-4" />,
-    code: `<div class="relative overflow-hidden rounded-xl w-80 h-56 group cursor-pointer shadow-lg">
-  <img 
-    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" 
-    alt="Tech" 
-    class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" 
-  />
-  <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
-    <h3 class="text-white font-bold text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Visualizza</h3>
-    <div class="w-8 h-1 bg-blue-500 mt-2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 delay-150 origin-left"></div>
   </div>
 </div>`
   },
@@ -159,6 +142,36 @@ const EXAMPLES = [
 </div>`
   },
   {
+    id: 'img-text-reveal',
+    category: 'Images',
+    title: 'Dark Overlay & Text',
+    icon: <ImageIcon className="w-4 h-4" />,
+    code: `<div class="relative overflow-hidden rounded-xl w-80 h-56 group cursor-pointer shadow-lg">
+  <img 
+    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" 
+    alt="Tech" 
+    class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110" 
+  />
+  <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+    <h3 class="text-white font-bold text-xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Visualizza</h3>
+    <div class="w-8 h-1 bg-blue-500 mt-2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 delay-150 origin-left"></div>
+  </div>
+</div>`
+  },
+  {
+    id: 'card-glass',
+    category: 'Cards',
+    title: 'Glassmorphism Lift',
+    icon: <Box className="w-4 h-4" />,
+    code: `<div class="p-8 bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl shadow-lg transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:bg-white/30 hover:border-white/50 cursor-pointer w-72 text-center group">
+  <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-pink-500 to-rose-500 text-white flex items-center justify-center rounded-2xl shadow-lg group-hover:rotate-12 transition-transform duration-500">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+  </div>
+  <h3 class="text-xl font-black text-gray-800 mb-2 uppercase tracking-tight">Premium UI</h3>
+  <p class="text-gray-600 font-medium">Design moderno con effetti di profondità.</p>
+</div>`
+  },
+  {
     id: 'card-flip-3d',
     category: 'Cards',
     title: '3D Flip Card',
@@ -175,19 +188,6 @@ const EXAMPLES = [
       <p class="text-sm text-neutral-400">Effetto 3D realizzato interamente con classi Tailwind CSS.</p>
     </div>
   </div>
-</div>`
-  },
-  {
-    id: 'card-glass',
-    category: 'Cards',
-    title: 'Glassmorphism Lift',
-    icon: <Box className="w-4 h-4" />,
-    code: `<div class="p-8 bg-white/20 backdrop-blur-xl border border-white/30 rounded-3xl shadow-lg transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:bg-white/30 hover:border-white/50 cursor-pointer w-72 text-center group">
-  <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-pink-500 to-rose-500 text-white flex items-center justify-center rounded-2xl shadow-lg group-hover:rotate-12 transition-transform duration-500">
-    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-  </div>
-  <h3 class="text-xl font-black text-gray-800 mb-2 uppercase tracking-tight">Premium UI</h3>
-  <p class="text-gray-600 font-medium">Design moderno con effetti di profondità.</p>
 </div>`
   },
   {
