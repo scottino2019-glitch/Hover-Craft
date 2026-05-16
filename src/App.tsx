@@ -176,7 +176,7 @@ const EXAMPLES = [
     category: 'Cards',
     title: '3D Flip Card',
     icon: <Box className="w-4 h-4" />,
-    code: `<div class="group h-64 w-64 perspective-1000 cursor-pointer">
+    code: `<div class="group h-64 w-64 [perspective:1000px] cursor-pointer">
   <div class="relative h-full w-full rounded-2xl shadow-xl transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
     <!-- Fronte -->
     <div class="absolute inset-0 h-full w-full rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center [backface-visibility:hidden]">
@@ -185,7 +185,7 @@ const EXAMPLES = [
     <!-- Retro -->
     <div class="absolute inset-0 h-full w-full rounded-2xl bg-neutral-900 border-2 border-purple-500 px-8 text-center text-slate-200 flex flex-col items-center justify-center [transform:rotateY(180deg)] [backface-visibility:hidden]">
       <h2 class="text-xl font-bold mb-2 text-purple-400">Sorpresa!</h2>
-      <p class="text-sm text-neutral-400">Effetto 3D realizzato interamente con classi Tailwind CSS.</p>
+      <p class="text-sm text-neutral-400">Effetto 3D realizzato con classi Native Tailwind CSS.</p>
     </div>
   </div>
 </div>`
@@ -210,15 +210,33 @@ export default function App() {
   const [code, setCode] = useState(EXAMPLES[0].code);
   const [copied, setCopied] = useState(false);
   const [key, setKey] = useState(0); // Force re-render of preview if needed
+  const [exportMode, setExportMode] = useState<'snippet' | 'full'>('snippet');
 
   const activeExample = EXAMPLES.find((ex) => ex.id === activeId) || EXAMPLES[0];
+
+  const getFullHtml = (htmlContent: string) => {
+    return `<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esportazione HoverCraft</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 flex items-center justify-center min-h-screen">
+  ${htmlContent}
+</body>
+</html>`;
+  };
+
+  const currentCode = exportMode === 'full' ? getFullHtml(code) : code;
 
   useEffect(() => {
     setCode(activeExample.code);
   }, [activeExample]);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(code);
+    navigator.clipboard.writeText(currentCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -332,6 +350,21 @@ export default function App() {
             </div>
             
             <div className="flex items-center gap-2">
+              <div className="flex bg-neutral-900 p-1 rounded-xl border border-neutral-800 mr-2">
+                <button 
+                  onClick={() => setExportMode('snippet')}
+                  className={`px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${exportMode === 'snippet' ? 'bg-neutral-800 text-white shadow-lg' : 'text-neutral-500 hover:text-neutral-300'}`}
+                >
+                  Snippet
+                </button>
+                <button 
+                  onClick={() => setExportMode('full')}
+                  className={`px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all ${exportMode === 'full' ? 'bg-neutral-800 text-white shadow-lg' : 'text-neutral-500 hover:text-neutral-300'}`}
+                >
+                  File Full
+                </button>
+              </div>
+
               <button
                 onClick={handleReset}
                 title="Ripristina codice originale"
@@ -357,13 +390,13 @@ export default function App() {
           <div className="flex-1 relative overflow-hidden group/editor">
             {/* Line Numbers Overlay */}
             <div className="absolute left-0 top-0 bottom-0 w-14 bg-[#0a0a0a] border-r border-neutral-800 text-right pr-4 py-6 text-[11px] font-mono text-neutral-700 select-none flex flex-col leading-[24px]">
-              {Array.from({ length: 20 }).map((_, i) => (
+              {Array.from({ length: 25 }).map((_, i) => (
                 <div key={i}>{i + 1}</div>
               ))}
             </div>
             
             <textarea
-              value={code}
+              value={currentCode}
               onChange={(e) => setCode(e.target.value)}
               className="w-full h-full bg-transparent text-emerald-200 font-mono text-sm p-6 pl-20 resize-none focus:outline-none leading-[24px] selection:bg-emerald-500/20 selection:text-emerald-100"
               style={{ tabSize: 2 }}
